@@ -6,22 +6,31 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CustomButton {
+        "label": string;
+    }
     interface MyComponent {
         /**
           * The first name
          */
-        "first": string;
+        "first"?: string;
         /**
           * The last name
          */
-        "last": string;
+        "last"?: string;
         /**
           * The middle name
          */
-        "middle": string;
+        "middle"?: string;
     }
 }
 declare global {
+    interface HTMLCustomButtonElement extends Components.CustomButton, HTMLStencilElement {
+    }
+    var HTMLCustomButtonElement: {
+        prototype: HTMLCustomButtonElement;
+        new (): HTMLCustomButtonElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +38,14 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "custom-button": HTMLCustomButtonElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CustomButton {
+        "label"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +61,9 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
 
+    interface CustomButtonAttributes {
+        "label": string;
+    }
     interface MyComponentAttributes {
         "first": string;
         "middle": string;
@@ -55,6 +71,7 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "custom-button": Omit<CustomButton, keyof CustomButtonAttributes> & { [K in keyof CustomButton & keyof CustomButtonAttributes]?: CustomButton[K] } & { [K in keyof CustomButton & keyof CustomButtonAttributes as `attr:${K}`]?: CustomButtonAttributes[K] } & { [K in keyof CustomButton & keyof CustomButtonAttributes as `prop:${K}`]?: CustomButton[K] };
         "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
     }
 }
@@ -62,6 +79,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "custom-button": LocalJSX.IntrinsicElements["custom-button"] & JSXBase.HTMLAttributes<HTMLCustomButtonElement>;
             "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

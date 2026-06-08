@@ -10,17 +10,15 @@
   "unpkg": "dist/my-design-system/my-design-system.esm.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/my-design-system/my-design-system.esm.js",
-      "require": "./dist/my-design-system/my-design-system.cjs.js"
-    },
-    "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
+      "require": "./dist/index.cjs.js"
     },
     "./loader": {
+      "default": "./loader/index.js",
+      "types": "./loader/index.d.ts",
       "import": "./loader/index.js",
-      "require": "./loader/index.cjs",
-      "types": "./loader/index.d.ts"
+      "require": "./loader/index.cjs.js"
     }
   },
   "repository": {
@@ -40,7 +38,7 @@
   },
   "devDependencies": {
     "@stencil/core": "^4.27.1 || ^5.0.0-0",
-    "@stencil/vitest": "^1.8.3",
+    "@stencil/vitest": "^1.12.1",
     "@types/node": "^22.13.5",
     "@vitest/browser-playwright": "^4.0.0",
     "playwright": "^1.52.0",
