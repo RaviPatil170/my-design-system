@@ -1,0 +1,1 @@
+import{r as t,h as c}from"./p-C-yzoIz-.js";const e=class{constructor(c){t(this,c)}label;render(){return c("button",{key:"c935919518eadcccff6ebd5e5232a828280167ce"},this.label)}};export{e as custom_button}

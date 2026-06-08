@@ -1,0 +1,1 @@
+import{p as o,b as t}from"./p-C-yzoIz-.js";export{s as setNonce}from"./p-C-yzoIz-.js";import{g as a}from"./p-DQuL1Twl.js";(()=>{const t=import.meta.url,a={};return""!==t&&(a.resourcesUrl=new URL(".",t).href),o(a)})().then((async o=>(await a(),t([["p-aa1a6a8e",[[513,"custom-button",{label:[1]}]]],["p-d76d90d3",[[513,"my-component",{first:[1],middle:[1],last:[1]}]]]],o))));
